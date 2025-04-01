@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NATO Phonetic Alphabet</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        #output {
+            white-space: pre-wrap; /* Preserve line breaks */
+        }
+    </style>
+</head>
+<body>
+    <h1>NATO Phonetic Alphabet</h1>
+    <textarea id="inputText" placeholder="Enter text here..."></textarea>
+    <div id="output"></div>
+
+    <script>
+        const natoAlphabet = {
+            'a': 'Alfa', 'b': 'Bravo', 'c': 'Charlie', 'd': 'Delta', 'e': 'Echo',
+            'f': 'Foxtrot', 'g': 'Golf', 'h': 'Hotel', 'i': 'India', 'j': 'Juliett',
+            'k': 'Kilo', 'l': 'Lima', 'm': 'Mike', 'n': 'November', 'o': 'Oscar',
+            'p': 'Papa', 'q': 'Quebec', 'r': 'Romeo', 's': 'Sierra', 't': 'Tango',
+            'u': 'Uniform', 'v': 'Victor', 'w': 'Whiskey', 'x': 'X-ray', 'y': 'Yankee',
+            'z': 'Zulu',
+            '0': 'Zero', '1': 'One', '2': 'Two', '3': 'Three', '4': 'Four',
+            '5': 'Five', '6': 'Six', '7': 'Seven', '8': 'Eight', '9': 'Nine',
+            ' ': ' ' // Keep spaces as spaces
+        };
+
+        const inputText = document.getElementById('inputText');
+        const outputDiv = document.getElementById('output');
+
+        inputText.addEventListener('input', function() {
+            outputDiv.innerHTML = ''; // Clear previous output
+            const text = inputText.value.toLowerCase();
+
+            for (let i = 0; i < text.length; i++) {
+                const char = text[i];
+                const natoWord = natoAlphabet[char];
+                if (natoWord) {
+                    const line = document.createElement('p');
+                    line.textContent = `${char}: ${natoWord}`;
+                    outputDiv.appendChild(line);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
